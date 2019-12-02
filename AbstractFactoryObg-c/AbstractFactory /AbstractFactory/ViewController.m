@@ -28,30 +28,33 @@
     for (NSUInteger i = 0; i < 10; i++) {
         BOOL random = [self yesOrNot];
         
-           if (random) {
-               
-               PoliceFactory *pf = [[PoliceFactory alloc] init];
-               _truck =  pf.createTruck;
-               NSLog(@"Truck name = %@", _truck.name);
-               NSLog(@"Truck type = %@", _truck.type);
-               _car = pf.createCar;
-               NSLog(@"Car name = %@", _car.name);
-               NSLog(@"Car type = %@", _car.type);
-               _suvCar = pf.createSUvCar;
-               NSLog(@"S.U.V. Car name = %@", _suvCar.name);
-               NSLog(@"S.U.V. Car type = %@", _suvCar.type);
-         } else  {
-                FireFactory *fc = [[FireFactory alloc] init];
-                _truck = fc.createTruck;
+       if (random) {
+           
+                PoliceFactory *pf = [[PoliceFactory alloc] init];
+                _truck =  [pf createTruck];
                 NSLog(@"Truck name = %@", _truck.name);
                 NSLog(@"Truck type = %@", _truck.type);
-                _suvCar = fc.createSUvCar;
+                _car = [pf createCar];
                 NSLog(@"Car name = %@", _car.name);
                 NSLog(@"Car type = %@", _car.type);
-                _car = fc.createCar;
+                _suvCar = [pf createSUvCar];
                 NSLog(@"S.U.V. Car name = %@", _suvCar.name);
                 NSLog(@"S.U.V. Car type = %@", _suvCar.type);
-         }
+           
+        } else {
+            
+                FireFactory *fc = [[FireFactory alloc] init];
+                _truck = [fc createTruck];
+                NSLog(@"Truck name = %@", _truck.name);
+                NSLog(@"Truck type = %@", _truck.type);
+                _suvCar = [fc createSUvCar];
+                NSLog(@"Car name = %@", _car.name);
+                NSLog(@"Car type = %@", _car.type);
+                _car = [fc createCar];
+                NSLog(@"S.U.V. Car name = %@", _suvCar.name);
+                NSLog(@"S.U.V. Car type = %@", _suvCar.type);
+            
+        }
     }
 }
 
